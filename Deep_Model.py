@@ -31,7 +31,7 @@ def Build_model(initializer_, input_image_size, BB_per_cell, Classes, batch_, mo
     batch_norm_3 = tf.keras.layers.BatchNormalization()(fifth_mini_block)
 
     conv_4 = tf.keras.layers.Conv2D(filters=BB_per_cell*(5+Classes), kernel_size=(3,3), strides=(1,1),
-                 activation=None,padding="same")(batch_norm_3)
+                 activation='sigmoid',padding="same", name='detection_sigmoid')(batch_norm_3)
 
     # up sampling
 
