@@ -14,19 +14,19 @@ def Build_model(initializer_, input_image_size, BB_per_cell, Classes, batch_, mo
     input_layer = tf.keras.layers.Input(shape=input_image_size, batch_size=batch_, name="input")
 
     first_mini_block = mini_conv_block(input_layer, filters=512, kernel_size=(3,3), 
-                       strides=(1,1), activation="relu", ker_initializer=initializer_, padd_="same")
+                       strides=(1,1), activation="elu", ker_initializer=initializer_, padd_="same")
 
     second_mini_block = mini_conv_block(first_mini_block, filters=256, kernel_size=(3,3), 
-                       strides=(1,1), activation="relu", ker_initializer=initializer_, padd_="same")
+                       strides=(1,1), activation="elu", ker_initializer=initializer_, padd_="same")
     
     third_mini_block = mini_conv_block(second_mini_block, filters=128, kernel_size=(3,3), 
-                       strides=(1,1), activation="relu", ker_initializer=initializer_, padd_="same")
+                       strides=(1,1), activation="elu", ker_initializer=initializer_, padd_="same")
     
     fourth_mini_block = mini_conv_block(third_mini_block, filters=64, kernel_size=(3,3), 
-                       strides=(1,1), activation="relu", ker_initializer=initializer_, padd_="same")
+                       strides=(1,1), activation="elu", ker_initializer=initializer_, padd_="same")
     
     fifth_mini_block = mini_conv_block(fourth_mini_block, filters=64, kernel_size=(3,3), 
-                       strides=(1,1), activation="relu", ker_initializer=initializer_, padd_="same")
+                       strides=(1,1), activation="elu", ker_initializer=initializer_, padd_="same")
     
     batch_norm_3 = tf.keras.layers.BatchNormalization()(fifth_mini_block)
 
